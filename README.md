@@ -18,7 +18,7 @@ This is a full-stack blog application built with **Spring Boot** for the backend
 - React 18+
 - Axios
 - React Router DOM
-- TailwindCSS / Bootstrap (optional)
+- Module based CSS
 - Form handling + validation
 
 ---
@@ -27,9 +27,7 @@ This is a full-stack blog application built with **Spring Boot** for the backend
 
 - 🔐 JWT-based authentication
 - 📝 Create, edit, delete blog posts
-- 💬 Comment system (nested)
 - 🔍 Search, pagination, filtering
-- 📁 Image upload (optional)
 - 🧑‍💻 User roles (`ROLE_USER`, `ROLE_ADMIN`)
 - 📱 Responsive UI
 
