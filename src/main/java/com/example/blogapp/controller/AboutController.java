@@ -3,6 +3,8 @@ package com.example.blogapp.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/about")
+@SecurityRequirement(name = "JWT")
 public class AboutController {
    @GetMapping
     public ResponseEntity<Map<String, String>> getAboutInfo() {

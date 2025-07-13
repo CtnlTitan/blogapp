@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from '../api/axios';
-import '../Styles/Login.css'
+import Styles from'../Styles/Login.module.css'
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -15,7 +15,7 @@ export default function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('/auth/login', credentials);
+      const res = await axios.post('/login', credentials);
       localStorage.setItem('jwt', res.data.token); // Save token
       alert('Login successful!');
       console.log(res.data);
@@ -31,11 +31,22 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className={Styles.loginContainer}>
+      <form onSubmit={handleSubmit} className={Styles.loginForm}>
       <h2>Login</h2>
-      <input name="email" placeholder="Email" value={credentials.email} onChange={handleChange} /><br/>
-      <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} /><br/>
-      <button type="submit">Login</button>
+      <input  name="email"     className={Styles.input}
+              placeholder="Email"
+              value={credentials.email}
+              onChange={handleChange} 
+      />
+      <input  type="password"   className={Styles.input}
+              name="password"
+              placeholder="Password"
+              value={credentials.password}
+              onChange={handleChange} 
+      />
+      <button type="submit" className={Styles.loginButton}>Login</button>
     </form>
+    </div>
   );
 }

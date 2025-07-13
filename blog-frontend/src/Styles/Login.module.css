@@ -1,0 +1,66 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  background-color: var(--background-color-navbar);
+  padding: 2rem;
+  border:var(--navbar-border);
+  border-radius: 8px;
+  box-shadow: var(--navbar-shadow);
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: var(--text-color);
+  border-radius: 5px;
+}
+
+.input:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+
+.loginButton {
+  padding: 0.8rem;
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color:var(--hover-bg);
+}

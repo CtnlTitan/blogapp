@@ -1,5 +1,6 @@
 package com.example.blogapp.service;
 
+import com.example.blogapp.exception.UsernameException;
 import com.example.blogapp.model.dto.request.AuthRequestDTO;
 import com.example.blogapp.model.dto.response.AuthResponseDTO;
 import com.example.blogapp.model.entity.User;
@@ -40,9 +41,15 @@ public class AuthService {
         return new AuthResponseDTO(token);
     }
 
-    public AuthResponseDTO register(AuthRequestDTO request) {
+    public AuthResponseDTO register(AuthRequestDTO request){
         if (userRepository.existsByuserName(request.getUserName())) {
-            throw new RuntimeException("Username already taken");
+            throw new UsernameException(request.getUserName());
+        }
+       else if (request.getUserName() == null || request.getUserName().trim().isEmpty()) {
+            throw new UsernameException();
+        }
+        if (request.getEmail() == null || !request.getEmail().contains("@")) {
+            throw new IllegalArgumentException("Invalid email address.");
         }
 
         // Create and save user

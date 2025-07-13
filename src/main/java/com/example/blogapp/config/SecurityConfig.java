@@ -33,7 +33,11 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login","/register").permitAll()  // public endpoints
+                        .requestMatchers(   "/login",
+                                            "/register",
+                                            "/swagger-ui/**",
+                                            "/swagger-ui.html",
+                                            "/v3/api-docs/**").permitAll()  // public endpoints
                         .anyRequest().authenticated()             // protect everything else
                 )
                 .sessionManagement(sess -> sess

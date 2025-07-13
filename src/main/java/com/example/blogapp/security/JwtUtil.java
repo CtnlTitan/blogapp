@@ -14,12 +14,20 @@ import java.util.Map;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "mWsxmjuhqCa3EqLWpig40vews6F0ptr8";
+     private final String SECRET_KEY;
+    private final Key key;
 
     private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 24L; // 24 hours
 
-    private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    public JwtUtil() {
+        this.SECRET_KEY = System.getenv("JWT_SECRET");
 
+        if (this.SECRET_KEY == null || this.SECRET_KEY.isEmpty()) {
+            throw new IllegalStateException("JWT_SECRET environment variable not set");
+        }
+
+        this.key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    }
 
     public String generateToken(UserDetails userDetails) {
         String username = userDetails.getUsername();
@@ -38,7 +46,6 @@ public class JwtUtil {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
-
 
     // Extract username from token
     public String extractUsername(String token) {
