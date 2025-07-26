@@ -9,6 +9,7 @@ HELP.md
 # === Environment ===
 .env
 application.properties
+application-dev.properties
 
 # === Maven ===
 target/
