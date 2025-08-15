@@ -1,8 +1,7 @@
 package com.example.blogapp.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "user", uniqueConstraints = {
@@ -10,6 +9,9 @@ import lombok.ToString;
         @UniqueConstraint(columnNames = {"email"})
 })
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
 
     @Id
